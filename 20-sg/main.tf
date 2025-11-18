@@ -27,3 +27,13 @@ module "frontend_sg" {
     common_tags = var.common_tags
     sg_tags = var.frontend_sg_tags
 }
+
+# mysql allowing connections on 3306 from the instances attached to backend sg
+resource "aws_security_group_rule" "mysql_backend" {
+  type              = "ingress"
+  from_port         = 3306
+  to_port           = 3306
+  protocol          = "tcp"
+  source_security_group_id       = module.backend_sg.id
+  security_group_id = module.mysql_sg.id
+}
