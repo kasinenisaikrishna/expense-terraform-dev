@@ -31,3 +31,9 @@ variable "frontend_sg_tags" {
         Component = "frontend"
     }
 }
+
+variable "backend_sg_tags" {
+  default = {
+      Component = "bastion"
+  }
+}
