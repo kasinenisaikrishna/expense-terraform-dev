@@ -76,33 +76,33 @@ module "ansible" {
 
 module "records" {
   source = "terraform-aws-modules/route53/aws"
-
-  name = var.zone_name
-
-  records = [
-    {
-      name = "mysql"
-      type = "A"
-      ttl = 1
+  
+name = var.zone_name
+ 
+records = {
+mysql = {
+      name    = "mysql"
+      type    = "A"
+      ttl     = 1
       records = [
-          module.mysql.private_ip
+        module.mysql.private_ip
       ]
     },
-    {
-      name = "backend"
-      type = "A"
-      ttl = 1
+backend = {
+      name    = "backend"
+      type    = "A"
+      ttl     = 1
       records = [
-          module.backend.private_ip
+        module.backend.private_ip
       ]
     },
-    {
-      name = "frontend"
-      type = "A"
-      ttl = 1
+frontend = {
+      name    = "frontend"
+      type    = "A"
+      ttl     = 1
       records = [
-          module.frontend.private_ip
+        module.frontend.private_ip
       ]
     }
-  ]
+	}
 }
