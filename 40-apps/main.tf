@@ -75,9 +75,9 @@ module "ansible" {
 }
 
 module "records" {
-  source = "terraform-aws-modules/route53/aws/"
+  source = "terraform-aws-modules/route53/aws"
 
-  zone_name = var.zone_name
+  name = var.zone_name
 
   records = [
     {
