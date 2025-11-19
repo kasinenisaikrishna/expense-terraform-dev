@@ -106,7 +106,7 @@ frontend = {
       ]
     },
 frontend = {
-      name    = ""
+      name    = "frontend-public"
       type    = "A"
       ttl     = 1
       records = [
