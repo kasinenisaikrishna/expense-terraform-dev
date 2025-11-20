@@ -88,6 +88,7 @@ mysql = {
       records = [
         module.mysql.private_ip
       ]
+      allow_overwrite = true
     },
 backend = {
       name    = "backend"
@@ -96,6 +97,7 @@ backend = {
       records = [
         module.backend.private_ip
       ]
+      allow_overwrite = true
     },
 frontend = {
       name    = "frontend"
@@ -104,6 +106,7 @@ frontend = {
       records = [
         module.frontend.private_ip
       ]
+      allow_overwrite = true
     }
 	}
 }
