@@ -75,13 +75,16 @@ module "ansible" {
   )
 }
 
+
+
 module "records" {
-  source = "terraform-aws-modules/route53/aws"
-  
-name = var.zone_name
- 
-records = {
-mysql = {
+  source  = "terraform-aws-modules/route53/aws//modules/records"
+  version = "2.11.0"
+
+  zone_name = var.zone_name
+
+  records = [
+    {
       name    = "mysql"
       type    = "A"
       ttl     = 1
@@ -90,7 +93,7 @@ mysql = {
       ]
       allow_overwrite = true
     },
-backend = {
+    {
       name    = "backend"
       type    = "A"
       ttl     = 1
@@ -99,7 +102,7 @@ backend = {
       ]
       allow_overwrite = true
     },
-frontend = {
+    {
       name    = "frontend"
       type    = "A"
       ttl     = 1
@@ -107,6 +110,15 @@ frontend = {
         module.frontend.private_ip
       ]
       allow_overwrite = true
+    },
+    {
+      name    = ""
+      type    = "A"
+      ttl     = 1
+      records = [
+        module.frontend.public_ip
+      ]
+      allow_overwrite = true
     }
-	}
+  ]
 }
