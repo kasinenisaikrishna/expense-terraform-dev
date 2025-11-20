@@ -82,7 +82,7 @@ name = var.zone_name
  
 records = {
 mysql = {
-      name    = "mysql"
+      name    = "mysql.${var.zone_name}"
       type    = "A"
       ttl     = 1
       records = [
@@ -90,7 +90,7 @@ mysql = {
       ]
     },
 backend = {
-      name    = "backend"
+      name    = "backend.${var.zone_name}"
       type    = "A"
       ttl     = 1
       records = [
@@ -98,7 +98,7 @@ backend = {
       ]
     },
 frontend = {
-      name    = "frontend"
+      name    = "frontend.${var.zone_name}"
       type    = "A"
       ttl     = 1
       records = [
