@@ -104,14 +104,6 @@ frontend = {
       records = [
         module.frontend.private_ip
       ]
-    },
-frontend = {
-      name    = "frontend-public"
-      type    = "A"
-      ttl     = 1
-      records = [
-        module.frontend.public_ip
-      ]
     }
 	}
 }
